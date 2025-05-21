@@ -66,7 +66,25 @@ All datasets are combined, cleaned, and tokenized for training.
 | The sweet potato fries were very good and seasoned well. | 1         |
 
 ---
+### Exploratory Data Analysis
 
+#### Sentiment Label Distribution
+![image](https://github.com/user-attachments/assets/0b6dc36c-e36f-4ef1-9999-9da1d07ecde4)
+
+The dataset is relatively balanced, containing a similar number of positive (~390) and negative (~360) reviews. This ensures the model is not biased toward one class during training.
+
+#### Word Cloud of Most Frequent Words
+![image](https://github.com/user-attachments/assets/12c73c74-05d9-4e8f-a452-93b815c1de1a)
+
+Common words such as **“movie”**, **“good”**, **“bad”**, **“plot”**, and **“character”** dominate the vocabulary. These terms reflect the emotionally charged language typical of user reviews and are valuable for sentiment classification.
+
+#### Sentence Length Distribution
+
+![image](https://github.com/user-attachments/assets/8a393102-0ded-4c03-aee1-912770b5c343)
+
+The distribution of sentence lengths shows that most reviews are short, with the 95th percentile at **34 tokens**. This value was selected as the **maximum sequence length** for padding to ensure coverage while maintaining training efficiency.
+
+---
 ## Model Architecture
 
 1. **Embedding Layer** – 100-dimensional GloVe vectors
@@ -99,6 +117,15 @@ All models were trained for up to 30 epochs with early stopping.
 
 ## Visual Analysis and Interpretations
 
+### Training Progress and Early Convergence
+![image](https://github.com/user-attachments/assets/d431c213-16da-4094-82f3-054ad7ad63ae)
+
+The training log shows the BiLSTM model trained with ReLU activation over 14 epochs before early stopping was triggered. The model consistently improved across epochs:
+
+- **ReLU** achieved **validation accuracy up to 75.8%** by Epochs 7, 10, and 11, with **training accuracy plateauing around 88–89%** and **validation loss decreasing steadily**.
+- **Sigmoid** showed **higher training accuracy (up to 89%)** but experienced **more fluctuation in validation accuracy** and **slightly worse generalization**, indicated by rising validation loss after epoch 13.
+- **Tanh** reached the **highest training accuracy (90.3%)** with a **validation accuracy plateau around 71.7–72.5%**, and relatively stable validation loss.
+  
 ### Validation Accuracy and Loss by Activation Function
 ![image](https://github.com/user-attachments/assets/06de689c-2a93-4b67-bb6f-676d3ecb1461)
 
