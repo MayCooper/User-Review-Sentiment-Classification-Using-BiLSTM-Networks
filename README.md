@@ -1,0 +1,2 @@
+# User-Review-Sentiment-Classification-Using-BiLSTM-Networks
+This project uses GloVe word embeddings with a BiLSTM-based neural network for sentiment classification of user reviews. It applies NLP techniques to preprocess text data and compares activation functions (ReLU, sigmoid, tanh) to evaluate their impact on model performance, with regularization and early stopping to improve generalization.
